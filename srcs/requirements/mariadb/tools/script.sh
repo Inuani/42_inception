@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # init Mariadb data directory
-# mysql_install_db --user=mysql --ldata=/var/lib/mysql
+mysql_install_db --user=mysql --ldata=/var/lib/mysql
 
 # start mariadb in the background
 mysqld --user=mysql 
