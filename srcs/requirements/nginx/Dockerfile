@@ -7,15 +7,15 @@ RUN apk update && \
     apk add --no-cache \
         nginx \
         openssl \
-    && rm -rf /var/cache/apk/*
+        curl \
+    && rm -rf /var/cache/apk/* \
+    && mkdir -p /etc/ssl/private
 
 # Create a self-signed SSL certificate
-RUN mkdir -p /etc/nginx/ssl/certs && \
-    mkdir -p /etc/nginx/ssl/private && \
-    openssl req -x509 -nodes -days 365 -newkey rsa:2048 \
-    -subj "/C=US/ST=CH/L=Geneva/O=Inuani/OU=Geneve/CN=${DOMAIN_NAME}" \
-    -keyout /etc/nginx/ssl/private/${DOMAIN_NAME}.key \
-    -out /etc/nginx/ssl/certs/${DOMAIN_NAME}.crt
+RUN openssl req -x509 -nodes -days 365 \
+    -subj  "/C=CH/ST=GE/L=Geneva/O=Inuani/CN=${DOMAIN_NAME}" \
+    -newkey rsa:2048 -keyout /etc/ssl/private/${DOMAIN_NAME}.key \
+    -out /etc/ssl/certs/${DOMAIN_NAME}.crt
 
 COPY conf/nginx.conf /etc/nginx/nginx.conf
 

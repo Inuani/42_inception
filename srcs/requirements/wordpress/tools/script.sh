@@ -4,6 +4,11 @@ mkdir -p /var/www/html
 cd /var/www/html
 rm -rf *
 
+# until mysqladmin -h mariadb -u $MYSQL_USER -p$MYSQL_PASSWORD ping; do
+#   echo "Waiting for MariaDB to start..."
+#   sleep 1
+# done
+
 until nc -z mariadb 3306; do
   echo "Waiting for MariaDB to start..."
   sleep 1
@@ -29,7 +34,7 @@ wp user create $WP_USER $WP_USER_EMAIL --role=author --user_pass=$WP_USER_PWD --
 wp theme install astra --activate --allow-root
 # wp plugin install redis-cache --activate --allow-root
 wp plugin update --all --allow-root
-sed -i 's/listen = \/run\/php\/php8-fpm.sock/listen = 9000/g' /etc/php8/php-fpm.d/www.conf
+sed -i 's/listen = 127.0.0.1:9000/listen = 9000/g' /etc/php8/php-fpm.d/www.conf
 mkdir /run/php
 #wp redis enable --allow-root
 /usr/sbin/php-fpm8 -F

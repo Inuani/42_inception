@@ -19,11 +19,11 @@ services:
     networks:
       - inception
     restart: always
-    environment:
-      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
-      - MYSQL_DATABASE=${MYSQL_DATABASE}
-      - MYSQL_USER=${MYSQL_USER}
-      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+    # environment:
+    #   - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+    #   - MYSQL_DATABASE=${MYSQL_DATABASE}
+    #   - MYSQL_USER=${MYSQL_USER}
+    #   - MYSQL_PASSWORD=${MYSQL_PASSWORD}
 
   wordpress:
     build: ./requirements/wordpress
@@ -31,8 +31,8 @@ services:
     env_file: .env
     ports:
       - 9000:9000
-    depends_on:
-      - mariadb
+    # depends_on:
+    #   - mariadb
     volumes:
       - wp_data:/var/www/html
     networks:
@@ -40,3 +40,22 @@ services:
     restart: always
     environment:
       - WP_DB_USER=${MYSQL_USER}
+
+  nginx:
+    container_name: nginx-c
+    build:
+      context: ./requirements/nginx
+      args:
+        DOMAIN_NAME: ${DOMAIN_NAME}
+    ports:
+      - 443:443
+    # volumes:
+    #   - ./html:/var/www/html
+    env_file: .env
+    depends_on:
+      - wordpress
+    volumes:
+      - wp_data:/var/www/html
+    networks:
+      - inception
+    restart: always
