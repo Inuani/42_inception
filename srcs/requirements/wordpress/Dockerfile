@@ -1,8 +1,25 @@
-FROM alpine:3.16
+FROM alpine:3.15
 
 RUN apk update && \
-    apk add --no-cache php8 php-phar php8-fpm php8-mysqli curl && \
-    rm -rf /var/cache/apk/*
+    apk add --no-cache \
+    php8 \
+    php8-phar \
+    php8-fpm \
+    php8-mysqli \
+    php8-json \
+    php8-curl \
+    php8-dom \
+    php8-xml \
+    php8-iconv \
+    php8-xmlreader \
+    php8-xmlwriter \
+    php8-tokenizer \
+    php8-simplexml \
+    mariadb-client \
+    netcat-openbsd \
+    curl && \
+    rm -rf /var/cache/apk/* && \
+    ln -s /usr/bin/php8 /usr/bin/php
 
 COPY ./tools/script.sh /script.sh
 RUN chmod +x /script.sh

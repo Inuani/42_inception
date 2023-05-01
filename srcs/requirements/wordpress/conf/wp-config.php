@@ -2,7 +2,7 @@
 define('DB_NAME', 'WP_DB_NAME');
 define('DB_USER', 'WP_DB_USER');
 define('DB_PASSWORD', 'WP_DB_PASSWORD');
-define('DB_HOST', 'WP_DB_HOST');
+define('DB_HOST', 'mariadb');
 define('DB_CHARSET', 'utf8');
 define('DB_COLLATE', '');
 
