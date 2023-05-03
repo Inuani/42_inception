@@ -2,12 +2,7 @@
 
 mkdir -p /var/www/html
 cd /var/www/html
-rm -rf *
-
-# until mysqladmin -h mariadb -u $MYSQL_USER -p$MYSQL_PASSWORD ping; do
-#   echo "Waiting for MariaDB to start..."
-#   sleep 1
-# done
+# rm -rf *
 
 until nc -z mariadb 3306; do
   echo "Waiting for MariaDB to start..."

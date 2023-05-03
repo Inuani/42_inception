@@ -60,8 +60,6 @@ services:
         DOMAIN_NAME: ${DOMAIN_NAME}
     ports:
       - 443:443
-    # volumes:
-    #   - ./html:/var/www/html
     env_file: .env
     depends_on:
       - wordpress
@@ -89,6 +87,8 @@ services:
     build: ./requirements/bonus/adminer
     ports:
       - 8080:80
+    depends_on:
+      - mariadb
     networks:
       - inception
     restart: always
