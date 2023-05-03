@@ -27,5 +27,3 @@ RUN chmod +x /script.sh
 COPY ./conf/wp-config.php /wp-config.php
 
 CMD ["sh", "/script.sh"]
-
-
