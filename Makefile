@@ -1,31 +1,34 @@
+DOCKERCMP_FILE=./srcs/docker-compose.yml
+DATA_PATH=./home/egauthey/data
+
 all: up
 
 up:
-	docker compose -f ./srcs/docker-compose.yml up -d 
+	docker compose -f ${DOCKERCMP_FILE} up -d 
 
 down:
-	docker compose -f ./srcs/docker-compose.yml down
+	docker compose -f ${DOCKERCMP_FILE} down
 
 start:
-	docker-compose -f ./srcs/docker-compose.yml start
+	docker compose -f ${DOCKERCMP_FILE} start
 
 stop:
-	docker-compose -f ./srcs/docker-compose.yml stop
+	docker compose -f ${DOCKERCMP_FILE} stop
 
 build:
-	docker-compose -f ./srcs/docker-compose.yml build
+	docker compose -f ${DOCKERCMP_FILE} build
 
 ps:
-	docker-compose -f ./srcs/docker-compose.yml ps
+	docker compose -f ${DOCKERCMP_FILE} ps
 
 logs:
-	docker-compose -f ./srcs/docker-compose.yml logs
+	docker compose -f ${DOCKERCMP_FILE} logs
 
 fclean: down
-	rm -rf ./home/egauthey/data/wordpress
-	mkdir ./home/egauthey/data/wordpress
-	rm -rf ./home/egauthey/data/mariadb
-	mkdir ./home/egauthey/data/mariadb
+	rm -rf ${DATA_PATH}/wordpress
+	mkdir ${DATA_PATH}/wordpress
+	rm -rf ${DATA_PATH}/mariadb
+	mkdir ${DATA_PATH}/mariadb
 
 re: fclean up
 

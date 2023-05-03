@@ -2,7 +2,6 @@ FROM alpine:3.15
 
 ARG DOMAIN_NAME
 
-# Update packages + install NGINX + clean up
 RUN apk update && \
     apk add --no-cache \
         nginx \

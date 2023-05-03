@@ -24,6 +24,4 @@ RUN apk update && \
 COPY ./tools/script.sh /script.sh
 RUN chmod +x /script.sh
 
-COPY ./conf/wp-config.php /wp-config.php
-
 CMD ["sh", "/script.sh"]
