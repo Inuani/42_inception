@@ -5,7 +5,7 @@ volumes:
     name: wordpress
     driver: local
     driver_opts:
-        device: /Users/egauthey/data/wordpress
+        device: /Users/egauthey/data/wordpress/
         o: bind
         type: none
 
@@ -13,7 +13,7 @@ volumes:
     name: mariadb
     driver: local
     driver_opts:
-      device: /Users/egauthey/data/mariadb
+      device: /Users/egauthey/data/mariadb/
       o: bind
       type: none
 
@@ -22,8 +22,9 @@ networks:
 
 services:
   mariadb:
-    build: ./requirements/mariadb
-    image: mariadb 
+    build: 
+      context: ./requirements/mariadb
+    image: mariadb
     container_name: mariadb-c
     env_file: .env
     ports:
@@ -35,7 +36,8 @@ services:
     restart: always
 
   wordpress:
-    build: ./requirements/wordpress
+    build: 
+      context: ./requirements/wordpress
     image: wordpress
     container_name: wordpress-c
     env_file: .env
@@ -53,11 +55,11 @@ services:
 
   nginx:
     container_name: nginx-c
-    image: nginx
     build:
       context: ./requirements/nginx
       args:
         DOMAIN_NAME: ${DOMAIN_NAME}
+    image: nginx
     ports:
       - 443:443
     env_file: .env
@@ -71,8 +73,9 @@ services:
 
   redis:
     container_name: redis-c
+    build: 
+      context: ./requirements/bonus/redis
     image: redis
-    build: ./requirements/bonus/redis
     depends_on:
       - wordpress
     volumes:
@@ -83,8 +86,9 @@ services:
 
   adminer:
     container_name: adminer-c
+    build: 
+      context: ./requirements/bonus/adminer
     image: adminer
-    build: ./requirements/bonus/adminer
     ports:
       - 8080:80
     depends_on:
@@ -92,3 +96,12 @@ services:
     networks:
       - inception
     restart: always
+
+  # static-website:
+  #   build: ./requirements/bonus/staticws
+  #   container_name: staticws-c
+  #   ports:
+  #     - 3000:3000
+  #   networks:
+  #     - inception
+  #   restart: always

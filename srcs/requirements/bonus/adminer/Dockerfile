@@ -7,9 +7,9 @@ RUN apk update && \
     chown -R lighttpd:lighttpd /usr/share/webapps
 
 COPY lighttpd.conf /etc/lighttpd/lighttpd.conf
-COPY entrypoint.sh /entrypoint.sh
-RUN chmod +x /entrypoint.sh
+COPY script.sh /script.sh
+RUN chmod +x /script.sh
 
 EXPOSE 80
 
-CMD ["/entrypoint.sh"]
+CMD ["/script.sh"]

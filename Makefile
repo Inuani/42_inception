@@ -1,10 +1,10 @@
 DOCKERCMP_FILE=./srcs/docker-compose.yml
-DATA_PATH=./home/egauthey/data
+DATA_PATH=/Users/egauthey/data
 
 all: up
 
 up:
-	docker compose -f ${DOCKERCMP_FILE} up -d 
+	docker compose -f ${DOCKERCMP_FILE} up -d --build
 
 down:
 	docker compose -f ${DOCKERCMP_FILE} down
@@ -24,7 +24,8 @@ ps:
 logs:
 	docker compose -f ${DOCKERCMP_FILE} logs
 
-fclean: down
+fclean:
+	docker compose -f ${DOCKERCMP_FILE} down -v
 	rm -rf ${DATA_PATH}/wordpress
 	mkdir ${DATA_PATH}/wordpress
 	rm -rf ${DATA_PATH}/mariadb
