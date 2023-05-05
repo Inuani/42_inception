@@ -1,15 +1,15 @@
 FROM alpine:3.15
 
 RUN apk update && \
-	apk add --no cache \
+	apk add --no-cache \
 	nodejs \
 	npm
 
 WORKDIR /app
 
 COPY ws ws
-COPY ./tools/script.sh /script.sh
-RUN chmod +x /script.sh
+COPY ./tools/script.sh /app/script.sh
+RUN chmod +x /app/script.sh
 
 EXPOSE 3000
 

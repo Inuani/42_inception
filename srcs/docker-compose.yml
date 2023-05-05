@@ -97,11 +97,11 @@ services:
       - inception
     restart: always
 
-  # static-website:
-  #   build: ./requirements/bonus/staticws
-  #   container_name: staticws-c
-  #   ports:
-  #     - 3000:3000
-  #   networks:
-  #     - inception
-  #   restart: always
+  static-website:
+    build: ./requirements/bonus/staticws
+    container_name: staticws-c
+    ports:
+      - 3000:3000
+    networks:
+      - inception
+    restart: always
