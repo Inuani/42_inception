@@ -5,7 +5,7 @@ volumes:
     name: wordpress
     driver: local
     driver_opts:
-        device: /home/egauthey/data/wordpress/
+        device: /Users/egauthey/data/wordpress/
         o: bind
         type: none
 
@@ -13,7 +13,7 @@ volumes:
     name: mariadb
     driver: local
     driver_opts:
-      device: /home/egauthey/data/mariadb/
+      device: /Users/egauthey/data/mariadb/
       o: bind
       type: none
 
