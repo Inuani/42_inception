@@ -4,32 +4,32 @@ DATA_PATH=/Users/egauthey/data
 all: up
 
 up:
-	docker compose -f ${DOCKERCMP_FILE} up -d --build
+	@docker compose -f ${DOCKERCMP_FILE} up -d --build
 
 down:
-	docker compose -f ${DOCKERCMP_FILE} down
+	@docker compose -f ${DOCKERCMP_FILE} down
 
 start:
-	docker compose -f ${DOCKERCMP_FILE} start
+	@docker compose -f ${DOCKERCMP_FILE} start
 
 stop:
-	docker compose -f ${DOCKERCMP_FILE} stop
+	@docker compose -f ${DOCKERCMP_FILE} stop
 
 build:
-	docker compose -f ${DOCKERCMP_FILE} build
+	@docker compose -f ${DOCKERCMP_FILE} build
 
 ps:
-	docker compose -f ${DOCKERCMP_FILE} ps
+	@docker compose -f ${DOCKERCMP_FILE} ps
 
 logs:
-	docker compose -f ${DOCKERCMP_FILE} logs
+	@docker compose -f ${DOCKERCMP_FILE} logs
 
 fclean:
-	docker compose -f ${DOCKERCMP_FILE} down -v
-	rm -rf ${DATA_PATH}/wordpress
-	mkdir ${DATA_PATH}/wordpress
-	rm -rf ${DATA_PATH}/mariadb
-	mkdir ${DATA_PATH}/mariadb
+	@docker compose -f ${DOCKERCMP_FILE} down -v
+	@rm -rf ${DATA_PATH}/wordpress
+	@mkdir ${DATA_PATH}/wordpress
+	@rm -rf ${DATA_PATH}/mariadb
+	@mkdir ${DATA_PATH}/mariadb
 
 re: fclean up
 

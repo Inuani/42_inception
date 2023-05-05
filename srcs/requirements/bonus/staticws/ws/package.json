@@ -1,5 +1,6 @@
+// meta data for project
 {
-	"name": "simple-static-website",
+	"name": "minirt-static-ws",
 	"version": "1.0.0",
 	"description": "A simple static website served by Node.js",
 	"main": "index.js",

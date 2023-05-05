@@ -6,8 +6,8 @@ RUN apk update && \
     wget -O /usr/share/webapps/adminer.php https://www.adminer.org/latest-mysql-en.php && \
     chown -R lighttpd:lighttpd /usr/share/webapps
 
-COPY lighttpd.conf /etc/lighttpd/lighttpd.conf
-COPY script.sh /script.sh
+COPY ./conf/lighttpd.conf /etc/lighttpd/lighttpd.conf
+COPY ./tools/script.sh /script.sh
 RUN chmod +x /script.sh
 
 EXPOSE 80
