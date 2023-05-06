@@ -1,6 +1,6 @@
-# Inception: A Darkly Intriguing Journey into the Dockerverse
+# Inception: An Odyssey into the Inner Dockerverse
 
-Welcome to Inception, an eerily engrossing project that takes you deep into the heart of a mysterious and complex Docker-based infrastructure. This treacherous journey is not for the faint of heart, as it will challenge your wits and cunning in setting up a multi-container environment from the depths of the digital abyss.
+Welcome to Inception, a project that takes you deep into the heart of your inner mysterious and complex Docker-based infrastructure. This treacherous journey is not for the faint of heart, as it will challenge your wits and cunning in setting up a multi-container environment from the depths of your digital abyss.
 
 ## The Premise
 
@@ -10,11 +10,16 @@ You are tasked with creating an otherworldly infrastructure consisting of severa
 
 A motley crew of containers and configurations make up your haunted playground:
 
-- **Nginx**: The gateway to the underworld, ushering in visitors through the port 443 with the ghostly whispers of TLSv1.2 or TLSv1.3.
-- **WordPress**: An eerie presence lurking in the shadows, wielding the power of PHP-FPM, but devoid of Nginx's companionship.
-- **MariaDB**: A solitary spirit, bereft of Nginx, but holding the key to the WordPress container's secrets.
-- **Volumes**: Ethereal storerooms for your WordPress database and website files.
-- **Network**: An arcane connection that binds your containers together, allowing them to communicate from the great beyond.
+- NGINX: The Undying Guardian, protecting the entryway to the Dockerverse
+  with its impenetrable TLSv1.2 or TLSv1.3 shield.
+- WordPress + PHP-FPM: The Twin Serpents, binding the realm with their formidable
+  web powers, slithering independently without the embrace of NGINX.
+- MariaDB: The Soulkeeper, guarding the crypts of data in the darkness, undisturbed
+  by the presence of NGINX.
+- Volumes: The Ethereal Archives, preserving the essence of the WordPress database
+  and website files in the realm of eternal storage.
+- Networks: The Unseen Threads, weaving a sinister web of connections between the
+  shadowy denizens of the Dockerverse.
 
 ## The Path to Darkness
 
@@ -26,17 +31,19 @@ To bring this sinister project to life, you must:
 4. Create a custom domain name that echoes your login, such as `login.42.fr`, and point it towards your local IP address.
 5. Protect your infrastructure with TLSv1.2 or TLSv1.3, ensuring that your Nginx container is the sole entry point.
 
-## Beware the Traps
+## The Rites of Summoning
 
-As you descend into the shadows, you must avoid the pitfalls and traps that await you:
+Prepare your incantations and invoke the powers of the Inner Dockerverse by
+performing the following rituals:
 
-- Steer clear of the `latest` tag.
-- Never reveal your passwords in your Dockerfiles.
-- Do not use `network: host`, `--link`, or `links:` in your configurations.
-- Shun the use of infinite loops or hacky patches, such as `tail -f`, `bash`, `sleep infinity`, or `while true`.
+1. Clone this repository into the sacrificial altar of your choice.
+2. Invoke the spirits by chanting `make`.
+
+With these rites completed, you shall pierce the veil and gaze upon the DarkDockerverse.
+May your journey into the shadows be as enlightening as it is treacherous.
 
 ## The Final Reckoning
 
 Once your haunted infrastructure is up and running, dare to access your website and witness the dark magic you've unleashed. But beware: the spirits of containers past will be watching your every move, ensuring you've followed their rules to the letter.
 
-Embrace the darkness, and may your journey into the Dockerverse be filled with spine-chilling discoveries and ungodly triumphs!
+Embrace the darkness, and may your journey into the Dockerverse be filled with spine-chilling discoveries and ungodly triumphs on yourse!
